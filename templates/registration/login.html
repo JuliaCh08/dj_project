@@ -1,0 +1,52 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+
+{% if form.errors %}
+  <p>Неверно введен логин или пароль. Попробуйте ещё раз.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>У вашей учетной записи нет доступа к этой странице. Чтобы продолжить,
+       используйте другую учетную запись, у которой есть доступ.</p>
+  {% else %}
+  {% endif %}
+{% endif %}
+<div class="form">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+  <h5>Авторизация</h5>
+  <p class="field-name">Логин</p>
+  <p class="entry-field"><img src="https://img.icons8.com/metro/26/26e07f/gender-neutral-user.png"/>{{ form.username }}</p>
+  <div class="password">
+  <p class="field-name">Пароль</p>
+  <p class="entry-field"><img src="https://img.icons8.com/metro/26/26e07f/password.png"/>{{ form.password }}</p>
+     <a href="#" class="password-control" onclick="return show_hide_password1(this);"></a>
+  </div>
+  <button type="submit" class="btn btn-success" style="margin-top: 10px;">Войти</button>
+  <input type="hidden" name="next" value="/main">
+
+</form>
+  <a href="{% url 'social:begin' 'facebook' %}"> <img src="{% static 'main/img/facebook_logo.png' %}"  alt="Логотип Facebook" style="width:100px; height: 100px;"></a>
+  <a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'main/img/google_logo.png' %}"  alt="Логотип Google" style="width:60px; height: 60px;"></a>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p class="bottom-text"><a href="{% url 'password_reset' %}">Забыли пароль? | </a>
+<a href="{% url 'register' %}"> Регистрация</a></p>
+</div>
+
+<script>
+    function show_hide_password1(target){
+	var input = document.getElementById('id_password');
+	if (input.getAttribute('type') == 'password') {
+		target.classList.add('view');
+		input.setAttribute('type', 'text');
+	} else {
+		target.classList.remove('view');
+		input.setAttribute('type', 'password');
+	}
+	return false;
+}
+</script>
+  {% endblock %}

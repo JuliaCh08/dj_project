@@ -1,0 +1,55 @@
+{% extends 'main/layout.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+
+<div class="form">
+    <h5 style="margin-bottom:0px;">Регистрация</h5>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h5 style="color:#DD4F43; margin-bottom:0px;">{{ error }}</h5>
+    {{ error_p }}
+    <p style="width: 100px; height: 100px; position:relative; left:37%; margin: 0px;">
+            {{ new_profile.avatar }}</p>
+    <p class="field-name">Логин</p>
+    <p>{{ form.username }}</p>
+    <p class="field-name">Email</p>
+    <p>{{ form.email }}</p>
+    <div class="password">
+    <p class="field-name">Пароль</p>
+    {{ form.password1 }}
+        <a href="#" class="password-control" onclick="return show_hide_password1(this);"></a>
+    </div>
+    <div class="password">
+    <p class="field-name">Повторите пароль</p>
+    {{ form.password2 }}
+        <a href="#" class="password-control2" onclick="return show_hide_password2(this);"></a>
+        </div>
+  <button type="submit" class="btn btn-success" style="margin-top: 5px;">Зарегистрироваться</button>
+  <input type="hidden" name="next" value="/main">
+</form>
+</div>
+<script>
+    function show_hide_password1(target){
+	var input = document.getElementById('id_password1');
+	if (input.getAttribute('type') == 'password') {
+		target.classList.add('view');
+		input.setAttribute('type', 'text');
+	} else {
+		target.classList.remove('view');
+		input.setAttribute('type', 'password');
+	}
+	return false;
+}
+function show_hide_password2(target){
+	var input = document.getElementById('id_password2');
+	if (input.getAttribute('type') == 'password') {
+		target.classList.add('view');
+		input.setAttribute('type', 'text');
+	} else {
+		target.classList.remove('view');
+		input.setAttribute('type', 'password');
+	}
+	return false;
+}
+</script>
+    {% endblock %}

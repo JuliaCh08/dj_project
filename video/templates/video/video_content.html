@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block title %} Видео{% endblock %}
+{% block content %}
+
+<div class="video-block">
+{% for el in video_content %}
+<div class="video-content">
+<iframe width="450" height="315" src="{{ el.video }} " frameborder="0" allowfullscreen></iframe><br>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}

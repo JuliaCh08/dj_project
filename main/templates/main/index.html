@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %} Главная{% endblock %}
+{% block content %}
+<form  class="form-inline my-2 my-lg-3" action="{% url 'home' %}">
+  <input class="form-control mr-sm-2" placeholder="Введите породу собаки" type="search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success my-2 my-sm-1"  type="submit">Поиск</button>
+</form>
+{% autoescape off %}
+<div class="mainpicture">
+    <p class="picturetext">
+    <b>Собака</b> - это точная копия <br> своего хозяина,
+    только <br> уменьшенная, хвостатая и <br> мохнатая
+    </p>
+</div>
+
+<div class="main-content">
+    <h2>Какой породы твой пиомец?</h2>
+    {% for element in dog_info%}
+    <div class="dog-info">
+    <img class="dog-img" src=' {{ element.image.url }}' alt="Картинка">
+    <div class="block" ><h4>{{ element.title }}</h4>
+    <p>{{element.anons}}<a href="{% url 'dog_breed' element.id %}" class="stretched-link">Читать детальнее</a></p></div>
+</div>
+    {% endfor %}
+    </div>
+{% endautoescape %}
+<!---<script>
+    alert('Вы посетили эту страницу {{ num_visits }}{% if num_visits == 1 %} раз{% else %} раз{% endif %}')
+</script>-->
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %} Форум{% endblock %}
+{% block content %}
+<div class="forum">
+    <form method="post">
+    {% csrf_token %}
+    {{ form_answer.full_answer }}
+    <button class="btn btn-success" type="submit" style="margin-left:150px;">Ответить</button>
+    </form>
+    </div>
+{% endblock %}

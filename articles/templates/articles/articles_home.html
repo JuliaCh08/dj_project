@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Статьи {% endblock %}
+
+{% block content %}
+<form  class="form-inline my-2 my-lg-3" action="{% url 'articles_home' %}">
+  <input class="form-control mr-sm-2" placeholder="Тема статьи" type="search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success my-2 my-sm-1"  type="submit">Поиск</button>
+</form>
+{% autoescape off %}
+<div class="article-content">
+    {% for el in page_obj %}
+    <div class="text-content">
+        <h4>{{ el.title }}</h4>
+        {% if el.image %}
+            <img class="article-img" src=' {{ el.image.url }}' alt="Картинка">
+        {% else %}
+        {% endif %}
+        <p>{{ el.anons }}</p>
+            <a href="{% url 'article-detail' el.id %}" class="btn btn-outline-success">Читать детальнее</a>
+    </div>
+    {% endfor %}
+</div>
+<span>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+    {% endif %}
+    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Далее</a>
+    {% endif %}
+</span>
+
+
+
+{% endautoescape %}
+
+{% endblock %}
+
+

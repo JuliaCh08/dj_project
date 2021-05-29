@@ -1,0 +1,38 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %} {{ dog_breed_info.title }}{% endblock %}
+{% block content %}
+        {% autoescape off %}
+        <div class="article-container">
+            <h1 class="article-title">{{ dog_breed_info.title }}</h1>
+            <div class="article-full-text">
+                {{ dog_breed_info.anons_img }}
+                {{ dog_breed_info.anons }}<br>
+                <h3>История происхождения породы </h3>
+                {{dog_breed_info.history}}
+                <h3>Характеристика породы</h3>
+                 {{ dog_breed_info.characteristic}}
+                 <ul style="list-style-type:none;">
+                     <li style="font-weight: 500; margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Рост: {{ dog_breed_info.height}}</b></li>
+                     <li style="font-weight: 500;margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px;margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Вес: {{ dog_breed_info.weight }}</b></li>
+                     <li style="font-weight: 500;margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px;margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Продолжительность жизни: {{ dog_breed_info.age }}</b></li>
+                 </ul>
+                <br>
+
+                <h3>Уход за питомцем </h3>
+                {{ dog_breed_info.pet_care }}
+                <ul style="list-style-type:none;">
+                    <li style=" margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Стрижка когтей:</b> {{ dog_breed_info.nails}}</li>
+                    <li style=" margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Чистка зубов:</b> {{ dog_breed_info.teeth }}</li>
+                    <li style=" margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Вычесывание шерсти:</b> {{ dog_breed_info.wool }}</li>
+                    <li style=" margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Купание:</b> {{ dog_breed_info.bathe }}</li>
+                    <li style=" margin-bottom: 10px;"><img src="{% static 'main/img/li.png' %}"  alt="знак списка" style="width:20px; height: 20px; margin-right: 5px;"><b style="font-size:17px; vertical-align:middle;">Чистка глаз и ушей:</b> {{ dog_breed_info.eyes_ears }}</li>
+                 </ul>
+
+                 {{ dog_breed_info.general_info}}
+
+                    </div>
+            </div>
+ {% endautoescape %}
+
+{% endblock %}

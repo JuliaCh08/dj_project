@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %} Форум{% endblock %}
+
+{% block content %}
+<form  class="form-inline my-2 my-lg-3" action="{% url 'forum' %}">
+  <input class="form-control mr-sm-2" placeholder="Поиск" type="search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success my-2 my-sm-1"  type="submit">Поиск</button>
+</form>
+<a href="{% url 'forum-detail' %}" class="btn btn-outline-success" style="margin-left:85%;">Задать вопрос</a>
+{% for el in forum %}
+    <table class="forum-container" style="text-align:center;">
+        <tr>
+<td style="width: 110px; height: 100px;">
+      <img  src="{{  el.author.userprofile.avatar.url }}" style="width: 5em; height: 5em; border: 1px solid #82CE80;" alt="avatar">
+
+    {{ el.author }}<br>
+    {{ el.date }}<br>
+</td>
+<td>
+        <h4>{{ el.title}}</h4>
+        <p>{{ el.full_text }}</p>
+    <a href="{% url 'answer-detail' id=el.id %}" class="btn btn-success" id="forum-btn" type="submit" style="margin-left:150px;">Ответить </a>
+
+</td>
+        </tr>
+</table>
+
+{% endfor %}
+
+{% for elem in answer%}
+    <table class="forum-container">
+        <tr>
+<td style="width: 110px; height: 100px;">
+     <img  src="{{  elem.user.userprofile.avatar.url }}" style="width: 5em; height: 5em; border: 1px solid #82CE80;" alt="avatar">
+    {{ elem.user }}<br>
+    {{ elem.date }}<br>
+</td>
+<td>
+    <p>Ответ на вопрос <em>{{ elem.forum.author }}</em>: <q>{{ elem.forum }}</q></p>
+        <p>{{ elem.full_answer }}</p>
+</td>
+        </tr>
+</table>
+{% endfor %}
+
+{% endblock %}
