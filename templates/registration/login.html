@@ -28,8 +28,6 @@
   <input type="hidden" name="next" value="/main">
 
 </form>
-  <a href="{% url 'social:begin' 'facebook' %}"> <img src="{% static 'main/img/facebook_logo.png' %}"  alt="Логотип Facebook" style="width:100px; height: 100px;"></a>
-  <a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'main/img/google_logo.png' %}"  alt="Логотип Google" style="width:60px; height: 60px;"></a>
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p class="bottom-text"><a href="{% url 'password_reset' %}">Забыли пароль? | </a>

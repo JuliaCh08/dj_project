@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',
-    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -60,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -76,21 +74,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+
+
             ],
         },
     },
 ]
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
-    'social_core.backends.instagram.InstagramOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -176,8 +166,4 @@ CKEDITOR_CONFIGS = {
 
 }
 
-SOCIAL_AUTH_FACEBOOK_KEY = '490388012161179'
-SOCIAL_AUTH_FACEBOOK_SECRET = '4292ca8575c3b77cb44463123a9350b6'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '995094765523-dhv75brlk42b658jilookn0b7n6qqjn0.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'syPZ7M4sISm6iPKceOjD_yuj'

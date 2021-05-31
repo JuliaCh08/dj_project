@@ -10,12 +10,16 @@ class RegisterForm(UserCreationForm):
     password1 = forms.CharField(min_length=8, widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
     password2 = forms.CharField(min_length=8, widget=forms.PasswordInput(attrs={'placeholder': 'Повторите пароль'}))
 
-    def clean(self):
-        # Определяем правило валидации
-        if self.cleaned_data.get('password1') != self.cleaned_data.get('password2'):
-            # Выбрасываем ошибку, если пароли не совпали
-            raise forms.ValidationError('Пароли не совпадают!')
-        return self.cleaned_data
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+
+        if not password2:
+            raise forms.ValidationError("Вы должны подтвердить свой пароль")
+        if password1 != password2:
+            raise forms.ValidationError("Ваши пароли не совпадают")
+        return password2
+
 
     class Meta:
         model = User

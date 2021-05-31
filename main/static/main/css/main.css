@@ -433,6 +433,7 @@ justify-content: flex-start;}
 footer{
 width: 100%;
 }
+
 }
 /* ------------480-------------- px */
 @media only screen and (max-width : 480px){
@@ -505,6 +506,9 @@ width: 200px;}
 text-align: center;
 font-size: 100%;
 }
+.password-control, .password-control2{
+	left: 71%;
+}
 }
 /* ------------320-------------- px */
 
@@ -555,6 +559,9 @@ margin-left: 100px !important;
 .footer-text {
     font-size: 190%;
 
+}
+.password-control, .password-control2{
+	left: 78%;
 }
 
 }

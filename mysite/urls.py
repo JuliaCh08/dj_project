@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth.views import PasswordResetConfirmView
 from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
@@ -31,7 +32,6 @@ urlpatterns = [
     path('forum/', include('forum.urls')),
     path('video/', include('video.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    path('oauth/', include('social_django.urls', namespace='social')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT,)

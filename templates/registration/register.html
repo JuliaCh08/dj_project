@@ -6,7 +6,6 @@
     <h5 style="margin-bottom:0px;">Регистрация</h5>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <h5 style="color:#DD4F43; margin-bottom:0px;">{{ error }}</h5>
     {{ error_p }}
     <p style="width: 100px; height: 100px; position:relative; left:37%; margin: 0px;">
             {{ new_profile.avatar }}</p>
